@@ -9,12 +9,8 @@
   "orm": "drizzle",
   "backend": "hono",
   "runtime": "node",
-  "frontend": [
-    "tanstack-router"
-  ],
-  "addons": [
-    "turborepo"
-  ],
+  "frontend": ["tanstack-router"],
+  "addons": ["turborepo"],
   "examples": [],
   "auth": true,
   "packageManager": "pnpm",
