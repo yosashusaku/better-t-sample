@@ -54,8 +54,7 @@ export function ProjectTable({ projects }: ProjectTableProps) {
                   data-state={row.getIsSelected() && "selected"}
                   className="cursor-pointer hover:bg-gray-50"
                   onClick={() => {
-                    // Navigate to project detail page
-                    console.log("Navigate to project:", row.original.id)
+                    window.location.href = `/project/${row.original.id}`
                   }}
                 >
                   {row.getVisibleCells().map((cell) => (

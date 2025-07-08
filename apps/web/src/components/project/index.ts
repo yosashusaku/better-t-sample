@@ -1,5 +1,8 @@
+export { ProjectDetail } from "./project-detail"
 export { ProjectFilters } from "./project-filters"
+export { ProjectHeader } from "./project-header"
 export { ProjectList } from "./project-list"
 export { ProjectStatsSection } from "./project-stats"
 export { ProjectTable } from "./project-table"
+export { ProjectTabs } from "./project-tabs"
 export { projectColumns } from "./table-columns"

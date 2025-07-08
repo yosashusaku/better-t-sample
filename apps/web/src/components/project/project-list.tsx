@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
-import { trpc } from "../../utils"
+import { trpc } from "@/utils/trpc"
 import { Button } from "../ui/button"
 import { ProjectFilters } from "./project-filters"
 import { ProjectStatsSection } from "./project-stats"
