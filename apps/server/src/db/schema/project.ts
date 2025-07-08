@@ -58,7 +58,13 @@ export const projectMember = pgTable("project_member", {
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
   role: projectRoleEnum("role").notNull().default("member"),
+  
+  // Labor cost calculation
+  estimatedHourlyRate: decimal("estimated_hourly_rate", { precision: 10, scale: 2 }), // Estimated rate for this project
+  actualHourlyRate: decimal("actual_hourly_rate", { precision: 10, scale: 2 }), // Rate from employeeSalary
+  
   joinedAt: timestamp("joined_at").notNull().defaultNow(),
+  leftAt: timestamp("left_at"),
 })
 
 // Monthly project management table

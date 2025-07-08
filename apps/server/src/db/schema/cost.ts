@@ -99,26 +99,6 @@ export const expense = pgTable("expense", {
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 })
 
-// Labor costs (time-based costing)
-export const laborCost = pgTable("labor_cost", {
-  id: text("id").primaryKey(),
-  projectId: text("project_id")
-    .notNull()
-    .references(() => project.id, { onDelete: "cascade" }),
-  projectMonthId: text("project_month_id")
-    .references(() => projectMonth.id, { onDelete: "set null" }),
-  userId: text("user_id")
-    .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
-  hours: decimal("hours", { precision: 8, scale: 2 }).notNull(),
-  hourlyRate: decimal("hourly_rate", { precision: 10, scale: 2 }).notNull(),
-  totalCost: decimal("total_cost", { precision: 15, scale: 2 }).notNull(),
-  currency: text("currency").notNull().default("JPY"),
-  workDate: timestamp("work_date").notNull(),
-  description: text("description"),
-  createdAt: timestamp("created_at").notNull().defaultNow(),
-  updatedAt: timestamp("updated_at").notNull().defaultNow(),
-})
 
 
 // Client invoices
