@@ -4,12 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --port=3001",
+    "dev": "vite --port=3000",
     "build": "vite build",
     "serve": "vite preview",
     "start": "vite",
     "check-types": "tsc --noEmit",
-    "wrangler:dev": "wrangler dev --port=3001",
+    "wrangler:dev": "wrangler dev --port=3000",
     "deploy": "pnpm run build && wrangler deploy"
   },
   "devDependencies": {

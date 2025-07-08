@@ -1,6 +1,6 @@
 import { decimal, pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core"
-import { user, organization } from "./auth"
-import { project, task } from "./project"
+import { user } from "./auth"
+import { project, projectMonth } from "./project"
 
 // Enums for cost management
 export const costCategoryTypeEnum = pgEnum("cost_category_type", [
@@ -57,6 +57,8 @@ export const projectBudget = pgTable("project_budget", {
   projectId: text("project_id")
     .notNull()
     .references(() => project.id, { onDelete: "cascade" }),
+  projectMonthId: text("project_month_id")
+    .references(() => projectMonth.id, { onDelete: "set null" }),
   costCategoryId: text("cost_category_id")
     .references(() => costCategory.id, { onDelete: "set null" }),
   budgetType: budgetTypeEnum("budget_type").notNull().default("initial"),
@@ -81,7 +83,8 @@ export const expense = pgTable("expense", {
   projectId: text("project_id")
     .notNull()
     .references(() => project.id, { onDelete: "cascade" }),
-  taskId: text("task_id").references(() => task.id, { onDelete: "set null" }),
+  projectMonthId: text("project_month_id")
+    .references(() => projectMonth.id, { onDelete: "set null" }),
   costCategoryId: text("cost_category_id")
     .references(() => costCategory.id, { onDelete: "set null" }),
   submittedById: text("submitted_by_id")
@@ -102,7 +105,8 @@ export const laborCost = pgTable("labor_cost", {
   projectId: text("project_id")
     .notNull()
     .references(() => project.id, { onDelete: "cascade" }),
-  taskId: text("task_id").references(() => task.id, { onDelete: "set null" }),
+  projectMonthId: text("project_month_id")
+    .references(() => projectMonth.id, { onDelete: "set null" }),
   userId: text("user_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
@@ -147,6 +151,8 @@ export const costReport = pgTable("cost_report", {
   projectId: text("project_id")
     .notNull()
     .references(() => project.id, { onDelete: "cascade" }),
+  projectMonthId: text("project_month_id")
+    .references(() => projectMonth.id, { onDelete: "set null" }),
   reportName: text("report_name").notNull(),
   reportType: text("report_type").notNull(), // 'summary', 'detailed', 'variance'
   startDate: timestamp("start_date").notNull(),
