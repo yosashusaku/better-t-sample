@@ -14,22 +14,23 @@
     "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
-    "dotenv": "^16.4.7",
-    "zod": "^3.25.16",
-    "@trpc/server": "^11.4.2",
-    "@trpc/client": "^11.4.2",
-    "@hono/trpc-server": "^0.4.0",
-    "hono": "^4.8.2",
     "@hono/node-server": "^1.14.4",
-    "drizzle-orm": "^0.44.2",
+    "@hono/trpc-server": "^0.4.0",
     "@neondatabase/serverless": "^1.0.1",
-    "better-auth": "^1.2.10"
+    "@trpc/client": "^11.4.2",
+    "@trpc/server": "^11.4.2",
+    "better-auth": "^1.2.10",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.44.2",
+    "drizzle-zod": "^0.8.2",
+    "hono": "^4.8.2",
+    "zod": "^3.25.16"
   },
   "devDependencies": {
-    "tsc-alias": "^1.8.11",
-    "typescript": "^5.8.2",
-    "tsx": "^4.19.2",
     "@types/node": "^22.13.11",
-    "drizzle-kit": "^0.31.2"
+    "drizzle-kit": "^0.31.2",
+    "tsc-alias": "^1.8.11",
+    "tsx": "^4.19.2",
+    "typescript": "^5.8.2"
   }
 }

@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth"
 import { drizzleAdapter } from "better-auth/adapters/drizzle"
-import { organization, multiSession } from "better-auth/plugins"
+import { multiSession, organization } from "better-auth/plugins"
 import { passkey } from "better-auth/plugins/passkey"
 import { db } from "../db"
 import * as schema from "../db/schema/auth"
@@ -31,7 +31,9 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
     }),
     passkey({
       rpName: process.env.APP_NAME || "Better-T Sample",
-      rpID: process.env.BETTER_AUTH_URL ? new URL(process.env.BETTER_AUTH_URL).hostname : "localhost",
+      rpID: process.env.BETTER_AUTH_URL
+        ? new URL(process.env.BETTER_AUTH_URL).hostname
+        : "localhost",
       origin: process.env.BETTER_AUTH_URL || "http://localhost:3000",
     }),
     multiSession({
