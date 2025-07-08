@@ -60,7 +60,7 @@ export const organization = pgTable(
     createdAt: timestamp("created_at").notNull(),
     metadata: text("metadata"),
   }
-)
+).enableRLS()
 
 export const member = pgTable("member", {
   id: text("id").primaryKey(),
