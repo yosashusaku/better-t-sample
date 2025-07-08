@@ -1,4 +1,4 @@
-import { projectFiltersSchema, projectIdSchema } from "../db/schema/zod"
+import { projectFiltersSchema, projectIdSchema } from "../schemas/project.schema"
 import { protectedProcedure, router } from "../lib/trpc"
 import { ProjectService } from "../services/project.service"
 

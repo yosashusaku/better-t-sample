@@ -4,7 +4,7 @@ import { db } from "../db"
 import { organization } from "../db/schema/auth"
 import { customer } from "../db/schema/customer"
 import { project, projectMember } from "../db/schema/project"
-import type { ProjectFilters } from "../db/schema/zod"
+import type { ProjectFilters } from "../schemas/project.schema"
 
 export interface ProjectWithDetails {
   id: string
