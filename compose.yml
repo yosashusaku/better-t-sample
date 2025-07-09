@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:17.5-bullseye
+    container_name: better-t-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: better_t_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  server:
+    build:
+      context: .
+      dockerfile: apps/server/Dockerfile
+    container_name: better-t-server
+    ports:
+      - "8787:8787"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/better_t_db
+      BETTER_AUTH_SECRET: hYOdqCKOAOVbMyJOeSNuhq5koQPAExXp
+      BETTER_AUTH_URL: http://localhost:8787
+      CORS_ORIGIN: http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: better-t-web
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_SERVER_URL: http://localhost:8787
+    depends_on:
+      - server
+
+volumes:
+  postgres_data:
